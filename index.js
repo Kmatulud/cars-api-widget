@@ -1,14 +1,17 @@
+const thElem = document.querySelector(".table");
+const colorsElem = document.querySelector(".colors");
+const makesElem = document.querySelector(".makes");
+
 
 const getData = () => {
     axios
         .get('https://api-tutor.herokuapp.com/v1/cars')
         .then((result) => {
             result.data.forEach(element => {
-                let ul = document.createElement('ul')
-                document.body.appendChild(ul)
-                let tr = document.createElement('li');
+
+                let tr = document.createElement('tr');
                 tr.innerHTML = JSON.stringify(element);
-                ul.appendChild(tr);
+                thElem.appendChild(tr);
                 // console.log(ul);
             });
         })
@@ -17,7 +20,7 @@ const getData = () => {
         .then((result)=>{
             result.data.forEach(element => {
                 let ul = document.createElement('ul')
-                document.body.appendChild(ul)
+                colorsElem.appendChild(ul)
                 let trow = document.createElement('li');
                 trow.innerHTML = element;
                 ul.appendChild(trow);
@@ -31,7 +34,7 @@ const getData = () => {
         .then((result)=>{
             result.data.forEach(element => {
             let ul = document.createElement('ul')
-            document.body.appendChild(ul)
+            makesElem.appendChild(ul)
             let tr = document.createElement('li');
             tr.innerHTML = element;
             ul.appendChild(tr);
