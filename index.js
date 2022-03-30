@@ -5,17 +5,6 @@ const makesElem = document.querySelector(".makes");
 
 const getData = () => {
     axios
-        .get('https://api-tutor.herokuapp.com/v1/cars')
-        .then((result) => {
-            result.data.forEach(element => {
-
-                let tr = document.createElement('tr');
-                tr.innerHTML = JSON.stringify(element);
-                thElem.appendChild(tr);
-                // console.log(ul);
-            });
-        })
-    axios
         .get('https://api-tutor.herokuapp.com/v1/colors')
         .then((result)=>{
             result.data.forEach(element => {
@@ -42,6 +31,17 @@ const getData = () => {
 
         });
 
+    })
+    axios
+    .get('https://api-tutor.herokuapp.com/v1/cars')
+    .then((result) => {
+        result.data.forEach(element => {
+
+            let tr = document.createElement('tr');
+            tr.innerHTML = JSON.stringify(element);
+            thElem.appendChild(tr);
+            // console.log(ul);
+        });
     })
 
 }
