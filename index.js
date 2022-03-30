@@ -1,4 +1,9 @@
-const thElem = document.querySelector(".table");
+const mkElem = document.querySelector(".make");
+const modelElem = document.querySelector(".model");
+const colorElem = document.querySelector(".color");
+const priceElem = document.querySelector(".price");
+const regnumElem = document.querySelector(".regnum");
+
 const colorsElem = document.querySelector(".colors");
 const makesElem = document.querySelector(".makes");
 
@@ -38,8 +43,23 @@ const getData = () => {
         result.data.forEach(element => {
 
             let tr = document.createElement('tr');
-            tr.innerHTML = JSON.stringify(element);
-            thElem.appendChild(tr);
+            let tr2 = document.createElement('tr');
+            let tr3 = document.createElement('tr');
+            let tr4 = document.createElement('tr');
+            let tr5 = document.createElement('tr');
+
+            tr.innerHTML = element.make;
+            tr2.innerHTML = element.model;
+            tr3.innerHTML = element.color;
+            tr4.innerHTML = element.price;
+            tr5.innerHTML = element.reg_number;
+
+            mkElem.appendChild(tr);
+            modelElem.appendChild(tr2);
+            colorElem.appendChild(tr3);
+            priceElem.appendChild(tr4);
+            regnumElem.appendChild(tr5);
+
             // console.log(ul);
         });
     })
