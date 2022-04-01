@@ -7,34 +7,69 @@
     <title>Cars API</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script type="text/x-template" class="hbsTemplate">        
+        {{#each color}}
+        <ul>
+            <li>{{this}}</li>
+        </ul>    
+        {{/each}}   
+        
+        {{#each make}}
+        <ul>
+            <li>{{this}}</li>
+        </ul>
+        {{/each}}
+         <table> 
+        {{#each car}}
+          <tr>
+            <td>{{make}}</td>
+            <td>{{model}}</td>
+            <td>{{color}}</td>
+            <td>{{price}}</td>
+            <td>{{reg_number}}</td>
+          </tr> 
+        {{/each}} 
+        </table>    
+    </script>
 </head>
 <body>
     <div class="main">
         <h1>Cars Api</h1>
-        <h4 class="colors">Colors</h4>
-        <h4 class="makes">Makes</h4>
-        <select name="" id="">
-            <option value="blue">Blue</option>
-            <option value="red">Red</option>
-            <option value="orange">Orange</option>
-            <option value="white">White</option>
-            <option value="grey">Grey</option>
+        <h4>Makes</h4>
+        <span class="mak"></span>
+        <h4>Colors</h4>
+        <span class="col"></span>
+        <h4>filter</h4>
+        <select id="select-brands" value="brands">
+            <option id="select-b" value="all">Select brand</option>
+            <option id="volks" value="volkswagen">Volkswagen</option>
+            <option id="toyota" value="toyota">Toyota</option>
+            <option id="nissan" value="nissan">Nissan</option>
+            <option id="ford" value="ford">Ford</option>
         </select>
-        <select name="" id="">
-            <option value="blue">Volkswagen</option>
-            <option value="red">Toyota</option>
-            <option value="orange">Nissan</option>
-            <option value="white">Ford</option>
+        <select id="select-colors" value="colors">
+            <option id="select-c" value="all">select Color</option>
+            <option id="blue" value="blue">Blue</option>
+            <option id="red" value="red">Red</option>
+            <option id="orange" value="orange">Orange</option>
+            <option id="white" value="white">White</option>
+            <option id="grey" value="grey">Grey</option>
         </select>
+        <button type="submit" id="filterBtn">Filter</button>
+        <h4>Cars</h4>
         <table>
-            <h4>Cars</h4>
-            <th class="make"> Make</th>
-            <th class="model">Model</th>
-            <th class="color">Color</th>
-            <th class="price">Price</th>
-            <th class="regnum">Reg Number</th>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Reg Number</th>
+            </tr>
         </table>
-        <script src="index.js"></script> 
+        <span class="ca"></span>
     </div>
+    <script src="index.js"></script> 
+    <script src="dom.js"></script>
 </body>
 </html>
