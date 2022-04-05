@@ -1,7 +1,39 @@
-table tr th{
-    background-color: grey;  
-    padding-right: 3.4rem;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    margin-left: 50px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #C98686;
 }
+
+table{
+    margin-top: 1.5rem;
+}
+
+table tr th{
+    background-color: #3F292B;  
+    padding-right: 3.4rem;
+    color: white;
+}
+
 table tr td{
     padding: 1rem;
+}
+
+select{
+    padding: 7px;
+    cursor: pointer;
+
+}
+
+button{
+    padding: 7px;
+    cursor: pointer;
+    background-color: #3F292B;
+    color: white;
+}
+
+button:hover{
+    background-color: #8b4604;
 }

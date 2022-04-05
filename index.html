@@ -1,75 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cars API</title>
     <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main"></div>
+</body>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    <script type="text/x-template" class="hbsTemplate">        
+    <script type="text/x-template" class="hbsTemplate">
+        <h1>Cars API</h1>
+        <h3>Car Colors</h3>
+        <ul>
         {{#each color}}
-        <ul>
             <li>{{this}}</li>
-        </ul>    
         {{/each}}   
-        
-        {{#each make}}
-        <ul>
-            <li>{{this}}</li>
         </ul>
+
+        <h3>Car Brands</h3>
+        <ul>
+        {{#each make}}
+            <li>{{this}}</li>
         {{/each}}
-         <table> 
-        {{#each car}}
-          <tr>
-            <td>{{make}}</td>
-            <td>{{model}}</td>
-            <td>{{color}}</td>
-            <td>{{price}}</td>
-            <td>{{reg_number}}</td>
-          </tr> 
-        {{/each}} 
-        </table>    
+        </ul>
+ 
+        <h3>Filter by color or brand</h3>
+        <select id="select-colors" name="colors">
+            <option value="all">Select color</option>
+            {{#each color}}
+            <option value={{this}}>{{this}}</option>
+            {{/each}}
+        </select>
+
+        <select id="select-brands" name="brands" >
+            <option value="all">Select brand</option>
+            {{#each make}}
+            <option value={{this}}>{{this}}</option>
+            {{/each}}
+        </select>
+
+        <button type="submit" id="filterBtn" onclick="setFilteredData()">Filter</button>
+
+        <table class="cars"></table>
+
     </script>
-</head>
-<body>
-    <div class="main">
-        <h1>Cars Api</h1>
-        <h4>Makes</h4>
-        <span class="mak"></span>
-        <h4>Colors</h4>
-        <span class="col"></span>
-        <h4>filter</h4>
-        <select id="select-brands" value="brands">
-            <option id="select-b" value="all">Select brand</option>
-            <option id="volks" value="volkswagen">Volkswagen</option>
-            <option id="toyota" value="toyota">Toyota</option>
-            <option id="nissan" value="nissan">Nissan</option>
-            <option id="ford" value="ford">Ford</option>
-        </select>
-        <select id="select-colors" value="colors">
-            <option id="select-c" value="all">select Color</option>
-            <option id="blue" value="blue">Blue</option>
-            <option id="red" value="red">Red</option>
-            <option id="orange" value="orange">Orange</option>
-            <option id="white" value="white">White</option>
-            <option id="grey" value="grey">Grey</option>
-        </select>
-        <button type="submit" id="filterBtn">Filter</button>
-        <h4>Cars</h4>
-        <table>
+    <script type="text/x-template" class="tableHbsTemplate">
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Price</th>
+            <th>Reg Number</th>
+        </tr>
+            {{#each cars}}
             <tr>
-                <th>Make</th>
-                <th>Model</th>
-                <th>Color</th>
-                <th>Price</th>
-                <th>Reg Number</th>
-            </tr>
-        </table>
-        <span class="ca"></span>
-    </div>
+              <td>{{this.make}}</td>
+              <td>{{this.model}}</td>
+              <td>{{this.color}}</td>
+              <td>R {{this.price}}</td>
+              <td>{{this.reg_number}}</td>
+            </tr> 
+         {{/each}} 
+    </script>
+
     <script src="index.js"></script> 
-    <script src="dom.js"></script>
-</body>
 </html>
